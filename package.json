@@ -1,0 +1,24 @@
+{
+  "name": "twitter-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/30-seconds/twitter-bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/30-seconds/twitter-bot/issues"
+  },
+  "homepage": "https://github.com/30-seconds/twitter-bot#readme",
+  "devDependencies": {
+    "node-fetch": "^2.6.0",
+    "puppeteer": "^2.0.0",
+    "twitter": "^1.7.1"
+  }
+}
