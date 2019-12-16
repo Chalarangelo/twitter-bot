@@ -8,7 +8,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Install dependencies
-      run: npm run install
+      run: npm install
     - name: Take screenshot and tweet
       run: |
         chmod +x ./index.js
