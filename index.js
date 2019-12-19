@@ -3,11 +3,11 @@ const tweet = require('./tweet');
 const fetch = require('node-fetch');
 
 const sample = arr => arr[Math.floor(Math.random() * arr.length)];
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 const sitemapUrl = 'https://www.30secondsofcode.org/sitemap.xml';
 const sitemapLinkRegex = /<loc>(https:\/\/www\.30secondsofcode\.org\/js\/s\/.*)<\/loc>/g;
 const randomBackgroundImageUrl = `https://api.unsplash.com/photos/random?collections=9038183&client_id=${process.env['UNSPLASH_KEY']}`;
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 
 (async() => {
@@ -21,9 +21,9 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
   const link = sample(links);
   const linkRes = await fetch(link.replace('js', 'page-data/js') + '/page-data.json');
   let linkDescription = await linkRes.json();
-  linkDescription = linkDescription.result.pageContext.snippet.description;
+  linkDescription =`${linkDescription.result.pageContext.snippet.title}: ${linkDescription.result.pageContext.snippet.description}`;
 
   screenshot(link, urls.regular, user.name);
   await sleep(15000);
-  await tweet(`${linkDescription} #30secondsofcode #javascript #js`);
+  await tweet(`${linkDescription} #30secondsofcode #javascript #js https://30secondsofcode.org`);
 })();

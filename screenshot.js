@@ -22,6 +22,7 @@ async function screenshot(url, imageUrl, name) {
     // add wrapper around the card
     const card = document.querySelector('.snippet-card');
     card.style.maxWidth = '720px';
+    card.style.zIndex = '8';
 
     // move logo to inside the card
     const logo = document.querySelector('.website-logo');
@@ -43,7 +44,7 @@ async function screenshot(url, imageUrl, name) {
     wrapper.style.justifyContent = 'center';
     wrapper.style.width = `${wrapperSize}px`;
     wrapper.style.height = `${wrapperSize}px`;
-    wrapper.style.padding = '20px';
+    wrapper.style.padding = '40px 20px';
     wrapper.style.position = 'relative';
 
     wrapper.style.background = `url("${imageUrl}")`;
@@ -63,10 +64,11 @@ async function screenshot(url, imageUrl, name) {
     photoBy.style.right = '16px';
     photoBy.style.fontStyle = 'italic';
     photoBy.style.weight = '400';
-    photoBy.style.color = 'rgba(255, 255, 255, 0.5)';
+    photoBy.style.color = 'rgba(255, 255, 255, 0.85)';
     photoBy.style.fontSize = '1rem';
     photoBy.style.letterSpace = '0.5px';
-    photoBy.style.textShadow = '0 4px 12px rgba(0,0,0,.08)';
+    photoBy.style.textShadow = '0 4px 12px rgba(0,0,0,.14)';
+    photoBy.style.zIndex = '3';
 
     wrapper.append(photoBy);
 
@@ -78,12 +80,24 @@ async function screenshot(url, imageUrl, name) {
     codeBy.style.left = '16px';
     codeBy.style.fontStyle = 'italic';
     codeBy.style.weight = '400';
-    codeBy.style.color = 'rgba(255, 255, 255, 0.5)';
+    codeBy.style.color = 'rgba(255, 255, 255, 0.85)';
     codeBy.style.fontSize = '1rem';
     codeBy.style.letterSpace = '0.5px';
-    codeBy.style.textShadow = '0 4px 12px rgba(0,0,0,.08)';
+    codeBy.style.textShadow = '0 4px 12px rgba(0,0,0,.14)';
+    codeBy.style.zIndex = '3';
 
     wrapper.append(codeBy);
+
+    const backGradient = document.createElement('div');
+
+    backGradient.style.position = 'absolute';
+    backGradient.style.bottom = '0';
+    backGradient.style.left = '0';
+    backGradient.style.width = '100%';
+    backGradient.style.height = '80px';
+    backGradient.style.background = 'linear-gradient(180deg, transparent, rgba(0,0,0,0.5))';
+    
+    wrapper.append(backGradient);
 
     [...document.querySelectorAll('.snippet-card > .tag-list > *')].forEach((tag, i, arr) => {
       if(i !== 0 && i !== 1 && i !== arr.length - 1) tag.style.display = 'none';

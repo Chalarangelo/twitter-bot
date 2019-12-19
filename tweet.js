@@ -18,11 +18,10 @@ const client = new Twitter({
 const tweet = promisify(description => {
   const snippetImage = fs.readFileSync('snippet.png');
   client.post('media/upload', {media: snippetImage}, function(error, media) {
-    console.log('hi');
     if (!error) {
 
       // If successful, a media object will be returned.
-      console.log(media);
+      console.log('Media uploaded');
 
       // Lets tweet it
       var status = {
@@ -31,10 +30,10 @@ const tweet = promisify(description => {
       };
 
       client.post('statuses/update', status, function(error, tweet) {
-        if (!error) console.log(tweet);
+        if (!error) console.log('Tweet successful');
       });
     } else
-      console.log(error);
+      console.log(`Error: ${error}`);
 
   });
 });
