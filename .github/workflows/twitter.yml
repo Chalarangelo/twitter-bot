@@ -1,7 +1,7 @@
 name: Post on Social
 on:
   schedule:
-    - cron: "20 17 * * *"
+    - cron: "0 17,23 * * *"
 jobs:
   build:
     runs-on: ubuntu-latest
