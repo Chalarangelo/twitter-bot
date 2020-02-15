@@ -25,7 +25,8 @@ async function screenshot(url, imageUrl, name) {
     card.style.zIndex = '8';
 
     // move logo to inside the card
-    const logo = document.querySelector('.website-logo');
+    const logo = document.querySelector('.nav-website-logo');
+    logo.style.position = 'absolute';
     logo.style.top = '16px';
     logo.style.right = '16px';
     card.prepend(logo);
