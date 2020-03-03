@@ -51,12 +51,6 @@ async function screenshot(url, imageUrl, name) {
     wrapper.style.background = `url("${imageUrl}")`;
     wrapper.style.backgroundSize = 'cover';
 
-    const cardTitle = document.querySelector('.snippet-card > .card-title');
-    cardTitle.style.display = 'inline-block';
-
-    const cardTagList = document.querySelector('.snippet-card > .tag-list');
-    cardTagList.style.display = 'inline-block';
-
     const photoBy = document.createElement('span');
     photoBy.innerText = `Background photo by ${name}`;
 
@@ -99,12 +93,6 @@ async function screenshot(url, imageUrl, name) {
     backGradient.style.background = 'linear-gradient(180deg, transparent, rgba(0,0,0,0.5))';
     
     wrapper.append(backGradient);
-
-    [...document.querySelectorAll('.snippet-card > .tag-list > *')].forEach((tag, i, arr) => {
-      if(i !== 0 && i !== 1 && i !== arr.length - 1) tag.style.display = 'none';
-    });
-
-
   }, imageUrl, name);
 
   await sleep(5000);
