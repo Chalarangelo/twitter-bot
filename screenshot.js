@@ -15,25 +15,25 @@ async function screenshot(url, imageUrl, name) {
   await sleep(1000);
 
   await page.evaluate((imageUrl, name) => {
-    // remove copy to clipboard button
-    const copyButton = document.querySelector('.copy-btn');
+    // remove card actions
+    const copyButton = document.querySelector('.card-actions');
     copyButton.remove();
 
     // add wrapper around the card
     const card = document.querySelector('.snippet-card');
-    card.style.maxWidth = '720px';
+    card.style.maxWidth = '800px';
     card.style.zIndex = '8';
 
     // move logo to inside the card
     const logo = document.querySelector('.nav-website-logo');
     logo.style.position = 'absolute';
-    logo.style.top = '16px';
-    logo.style.right = '16px';
+    logo.style.top = '32px';
+    logo.style.right = '24px';
     card.prepend(logo);
 
     const { width: cardWidth, height: cardHeight } = card.getBoundingClientRect();
 
-    const wrapperSize = Math.max(cardWidth, cardHeight, 760);
+    const wrapperSize = Math.max(cardWidth, cardHeight, 900);
 
     const wrapper = document.createElement('div');
     card.parentNode.insertBefore(wrapper, card);
@@ -91,7 +91,7 @@ async function screenshot(url, imageUrl, name) {
     backGradient.style.width = '100%';
     backGradient.style.height = '80px';
     backGradient.style.background = 'linear-gradient(180deg, transparent, rgba(0,0,0,0.5))';
-    
+
     wrapper.append(backGradient);
   }, imageUrl, name);
 
