@@ -1,15 +1,15 @@
-const fetch = require("node-fetch");
+const fetch = require('node-fetch');
 
-const screenshot = require("./screenshot");
-const caption = require("./caption");
-const tweet = require("./tweet");
+const screenshot = require('./screenshot');
+const caption = require('./caption');
+const tweet = require('./tweet');
 
 const sample = (arr) => arr[Math.floor(Math.random() * arr.length)];
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const sitemapUrl = "https://www.30secondsofcode.org/sitemap.xml";
+const sitemapUrl = 'https://www.30secondsofcode.org/sitemap.xml';
 const sitemapLinkRegex = /<loc>(https:\/\/www\.30secondsofcode\.org\/js\/s\/.*)<\/loc>/g;
-const randomBackgroundImageUrl = `https://api.unsplash.com/photos/random?collections=9038183&client_id=${process.env["UNSPLASH_KEY"]}`;
+const randomBackgroundImageUrl = `https://api.unsplash.com/photos/random?collections=9038183&client_id=${process.env['UNSPLASH_KEY']}`;
 
 (async () => {
   const response = await fetch(randomBackgroundImageUrl);
@@ -19,11 +19,11 @@ const randomBackgroundImageUrl = `https://api.unsplash.com/photos/random?collect
   let links = await sitemap.text();
   links = links
     .match(sitemapLinkRegex)
-    .map((s) => s.replace(sitemapLinkRegex, "$1"));
+    .map((s) => s.replace(sitemapLinkRegex, '$1'));
 
   const link = sample(links);
   const linkRes = await fetch(
-    link.replace("js", "page-data/js") + "/page-data.json"
+    link.replace('js', 'page-data/js') + '/page-data.json'
   );
   let linkDescription = await linkRes.json();
   linkDescription = `${linkDescription.result.pageContext.snippet.title}: ${linkDescription.result.pageContext.snippet.description}`;
