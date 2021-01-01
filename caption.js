@@ -1,5 +1,5 @@
 const MAX_CAPTION_LENGTH = 240; // maximum number of characters allowed per tweet
-const HASHTAGS = `#30secondsofcode #JavaScript #LearnToCode #js`;
+const HASHTAGS = `#100DaysOfCode #CodeNewbies #JavaScript #code`;
 
 const truncateString = (str, num) =>
   str.length > num ? str.slice(0, num > 3 ? num - 3 : num) + '...' : str;
